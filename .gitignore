@@ -1,0 +1,8 @@
+node_modules
+dist
+preview
+Open demo.html
+.DS_Store
+*.log
+.vercel
+.env*.local

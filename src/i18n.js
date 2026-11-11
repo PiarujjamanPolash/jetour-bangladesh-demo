@@ -1,0 +1,273 @@
+import { createContext, useContext } from 'react'
+
+export const strings = {
+  en: {
+    ribbon: 'Concept demo for Jetour Bangladesh. Not the official website.',
+    nav: { models: 'Models', spin: '360° view', idm: 'i-DM Hybrid', drive: 'Test drive', showroom: 'Showroom', compare: 'Compare' },
+    lang: 'বাংলা',
+    hero: {
+      over: 'Official distributor of Jetour in Bangladesh',
+      title1: 'Every road',
+      title2: 'in Bangladesh.',
+      sub: 'Travel-ready SUVs, from the plug-in hybrid T2 i-DM to the seven-seat X70 Plus. Now at Tejgaon-Gulshan Link Road.',
+      explore: 'Explore models',
+      drive: 'Book a test drive',
+      scroll: 'Scroll',
+    },
+    cta: { price: 'Call for price', whatsapp: 'WhatsApp', drive: 'Test drive', call: 'Call' },
+    lineup: {
+      over: 'The line-up',
+      title: 'Three SUVs. One for every journey.',
+      note: 'Specifications from Jetour global information. Bangladesh specifications may differ.',
+    },
+    models: {
+      t2: { tag: 'Plug-in hybrid travel SUV', blurb: 'Boxy, go-anywhere design with a hybrid system that runs the daily commute on electricity alone.' },
+      dashing: { tag: 'Five-seat urban SUV', blurb: 'Sharp coupé lines, a tech-filled cabin and the turbo power to match Dhaka traffic and highways alike.' },
+      x70: { tag: 'Seven-seat family SUV', blurb: 'Three rows, a panoramic roof and room for the whole family, the grandparents and the luggage.' },
+    },
+    spec: {
+      evRange: 'Electric range (NEDC)', combined: 'Combined range', torque: 'Combined torque',
+      engine: 'Turbo petrol engine', seats: 'Seats', screens: 'Digital screens', wheels: 'Alloy wheels',
+    },
+    spin: {
+      over: 'T2 i-DM in 360°',
+      title: 'Turn it around.',
+      hint: 'Drag the car, or use the slider',
+      facts: ['64-inch panoramic sunroof', 'Matrix LED headlights', '15.6-inch central screen', '540° panoramic camera'],
+    },
+    trip: {
+      over: 'i-DM trip planner',
+      title: 'Pick a trip. See how the hybrid handles it.',
+      from: 'From Dhaka to',
+      oneWay: 'One way', ret: 'Return',
+      battery: 'On battery', fuel: 'On fuel', total: 'Total trip',
+      noStop: 'Done on one charge and one tank. No fuel stop needed.',
+      oneStop: 'Longer than one charge and one tank. Plan one fuel stop.',
+      daily: 'Daily commute? Most Dhaka commutes fit inside the electric range, so you may rarely use fuel at all.',
+      note: 'Estimate based on NEDC figures: up to 139 km electric, 1,000 km+ combined. Real-world range depends on traffic, load and weather. Distances are approximate road distances.',
+      routes: { cox: "Cox's Bazar", ctg: 'Chattogram', syl: 'Sylhet', sajek: 'Sajek Valley' },
+    },
+    travel: {
+      over: 'Travel+',
+      quote: 'Human civilization is a history of travel.',
+      body: "Jetour builds its cars around one idea: the journey matters. From the hill roads of Sajek to the marine drive in Cox's Bazar, these SUVs are made for the trips Bangladeshi families actually take.",
+    },
+    bento: {
+      over: 'Made for the journey',
+      a: 'Matrix lights and a confident stance',
+      b: 'A cabin built around the screen',
+      c: 'Room for three generations',
+      d: 'Ready when the road ends',
+    },
+    trust: {
+      over: 'Why buy official',
+      title: 'Buy from the official distributor.',
+      items: [
+        ['Authorised', 'Official Jetour distributor, authorised by Auto Museum Ltd.'],
+        ['Genuine parts', 'Factory parts and trained technicians for service.'],
+        ['Test drives', 'Drive any model at our Tejgaon showroom before you decide.'],
+        ['Quick answers', 'Ask about price, colours and delivery on WhatsApp.'],
+      ],
+    },
+    drive: {
+      over: 'Test drive',
+      title: 'Feel it on Dhaka roads.',
+      body: 'Tell us which model and when. We will confirm on WhatsApp, usually the same day.',
+      name: 'Your name', phone: 'Phone number', model: 'Model', day: 'Preferred day',
+      send: 'Send on WhatsApp',
+      msg: (f) => `Hello Jetour Bangladesh, I would like to book a test drive.\nName: ${f.name}\nPhone: ${f.phone}\nModel: ${f.model}\nPreferred day: ${f.day}`,
+      priceMsg: (m) => `Hello Jetour Bangladesh, I would like to know the price of the ${m}.`,
+    },
+    showroom: {
+      over: 'Showroom',
+      title: 'Visit us in Tejgaon.',
+      status: 'Opening soon',
+      directions: 'Get directions',
+    },
+    menu: { open: 'Menu', close: 'Close', home: 'Home', models: 'All models', compare: 'Compare models' },
+    common: {
+      explore: 'Explore', allModels: 'All models', specs: 'Specifications', compare: 'Compare models',
+      priceNote: 'Prices on request. Call or WhatsApp us for the latest price, colours and offers.',
+      specNote: 'Specifications from Jetour global information. Please confirm the Bangladesh specification with our team.',
+      colours: 'Colours', otherModels: 'Other models',
+    },
+    sub: { overview: 'Overview', design: 'Design', idm: 'i-DM Hybrid', interior: 'Interior', features: 'Features', safety: 'Safety', specs: 'Specs' },
+    modelPage: {
+      gallery: 'On the road',
+      idmTitle: 'One car, three ways to drive.',
+      idmBody: 'i-DM is Jetour\'s plug-in hybrid system. Charge at home overnight, drive on electricity during the week, and let the engine take over on long trips. No range worry.',
+      ctaTitle: (n) => `Ready to see the ${n} in person?`,
+      ctaBody: 'Call for the latest price, or book a test drive at our Tejgaon showroom.',
+    },
+    modelsPage: {
+      over: 'Models',
+      title: 'Find the Jetour that fits your life.',
+      body: 'Three SUVs, one idea: the journey matters. Compare them side by side, then come and drive the one you like.',
+      compareTitle: 'Side by side',
+      model: 'Model',
+    },
+    drivePage: {
+      steps: [
+        ['Send your request', 'Pick a model and a day. The form opens WhatsApp with your details filled in.'],
+        ['We confirm', 'Our team replies to confirm the time, usually the same day.'],
+        ['Drive it', 'Come to the Tejgaon showroom with your driving licence. The drive takes about 30 minutes.'],
+      ],
+      bring: 'Please bring a valid driving licence.',
+    },
+    showroomPage: {
+      hours: 'Opening hours',
+      hoursValue: 'To be announced with the showroom opening',
+      contact: 'Contact',
+      faqTitle: 'Common questions',
+      faq: [
+        ['Do you show prices online?', 'Prices change with exchange rates and offers, so we share the latest price by phone or WhatsApp.'],
+        ['Can I book a test drive?', 'Yes. Use the test drive page or send us a WhatsApp message with the model and the day you prefer.'],
+        ['Are you the official distributor?', 'Yes. Jetour Bangladesh is the official distributor of Jetour cars in Bangladesh, authorised by Auto Museum Ltd.'],
+        ['Which models are available?', 'The T2 i-DM plug-in hybrid, the Dashing and the seven-seat X70 Plus. Ask us about availability and colours.'],
+      ],
+    },
+    notFound: { title: 'This road does not exist.', body: 'The page you are looking for has moved or never existed.', home: 'Back to home' },
+    footer: {
+      note: 'Concept demo prepared for Jetour Bangladesh. Photos and video from Jetour official websites. Specifications from Jetour global information; Bangladesh specifications may differ.',
+      follow: 'Follow',
+    },
+  },
+
+  bn: {
+    ribbon: 'জেটুর বাংলাদেশের জন্য কনসেপ্ট ডেমো। এটি অফিশিয়াল ওয়েবসাইট নয়।',
+    nav: { models: 'মডেল', spin: '৩৬০° ভিউ', idm: 'i-DM হাইব্রিড', drive: 'টেস্ট ড্রাইভ', showroom: 'শোরুম', compare: 'তুলনা' },
+    lang: 'English',
+    hero: {
+      over: 'বাংলাদেশে জেটুরের অফিশিয়াল ডিস্ট্রিবিউটর',
+      title1: 'বাংলাদেশের',
+      title2: 'প্রতিটি পথে।',
+      sub: 'প্লাগ-ইন হাইব্রিড T2 i-DM থেকে সাত আসনের X70 Plus, ভ্রমণের জন্য তৈরি এসইউভি। এখন তেজগাঁও-গুলশান লিংক রোডে।',
+      explore: 'মডেলগুলো দেখুন',
+      drive: 'টেস্ট ড্রাইভ বুক করুন',
+      scroll: 'স্ক্রল',
+    },
+    cta: { price: 'দামের জন্য কল করুন', whatsapp: 'হোয়াটসঅ্যাপ', drive: 'টেস্ট ড্রাইভ', call: 'কল' },
+    lineup: {
+      over: 'মডেলসমূহ',
+      title: 'তিনটি এসইউভি। প্রতিটি যাত্রার জন্য একটি।',
+      note: 'স্পেসিফিকেশন জেটুর গ্লোবাল তথ্য থেকে নেওয়া। বাংলাদেশের স্পেসিফিকেশন ভিন্ন হতে পারে।',
+    },
+    models: {
+      t2: { tag: 'প্লাগ-ইন হাইব্রিড ট্রাভেল এসইউভি', blurb: 'যেকোনো পথে যাওয়ার মতো বলিষ্ঠ ডিজাইন, আর এমন হাইব্রিড সিস্টেম যা প্রতিদিনের যাতায়াত শুধু বিদ্যুতেই চালায়।' },
+      dashing: { tag: 'পাঁচ আসনের আরবান এসইউভি', blurb: 'কুপে স্টাইলের ধারালো লাইন, প্রযুক্তিতে ভরা কেবিন আর ঢাকার জ্যাম থেকে হাইওয়ে, সবখানে মানানসই টার্বো শক্তি।' },
+      x70: { tag: 'সাত আসনের ফ্যামিলি এসইউভি', blurb: 'তিন সারি আসন, প্যানোরামিক ছাদ, আর পুরো পরিবার, দাদা-দাদি ও লাগেজের জন্য যথেষ্ট জায়গা।' },
+    },
+    spec: {
+      evRange: 'ইলেকট্রিক রেঞ্জ (NEDC)', combined: 'সম্মিলিত রেঞ্জ', torque: 'সম্মিলিত টর্ক',
+      engine: 'টার্বো পেট্রোল ইঞ্জিন', seats: 'আসন', screens: 'ডিজিটাল স্ক্রিন', wheels: 'অ্যালয় হুইল',
+    },
+    spin: {
+      over: '৩৬০° তে T2 i-DM',
+      title: 'ঘুরিয়ে দেখুন।',
+      hint: 'গাড়িটি টেনে ঘোরান, অথবা স্লাইডার ব্যবহার করুন',
+      facts: ['৬৪ ইঞ্চি প্যানোরামিক সানরুফ', 'ম্যাট্রিক্স এলইডি হেডলাইট', '১৫.৬ ইঞ্চি সেন্ট্রাল স্ক্রিন', '৫৪০° প্যানোরামিক ক্যামেরা'],
+    },
+    trip: {
+      over: 'i-DM ট্রিপ প্ল্যানার',
+      title: 'একটি যাত্রা বেছে নিন। দেখুন হাইব্রিড কীভাবে সামলায়।',
+      from: 'ঢাকা থেকে',
+      oneWay: 'একমুখী', ret: 'আসা-যাওয়া',
+      battery: 'ব্যাটারিতে', fuel: 'জ্বালানিতে', total: 'মোট যাত্রা',
+      noStop: 'এক চার্জ আর এক ট্যাংকেই পুরো যাত্রা। পথে তেল নেওয়ার দরকার নেই।',
+      oneStop: 'এক চার্জ ও এক ট্যাংকের চেয়ে লম্বা যাত্রা। একবার তেল নেওয়ার পরিকল্পনা রাখুন।',
+      daily: 'প্রতিদিনের যাতায়াত? ঢাকার বেশিরভাগ যাতায়াত ইলেকট্রিক রেঞ্জের মধ্যেই, তাই জ্বালানি হয়তো খুব কমই লাগবে।',
+      note: 'NEDC তথ্যের ভিত্তিতে আনুমানিক হিসাব: সর্বোচ্চ ১৩৯ কিমি ইলেকট্রিক, ১,০০০+ কিমি সম্মিলিত। বাস্তবে রেঞ্জ ট্রাফিক, ওজন ও আবহাওয়ার ওপর নির্ভর করে। দূরত্বগুলো আনুমানিক সড়ক দূরত্ব।',
+      routes: { cox: 'কক্সবাজার', ctg: 'চট্টগ্রাম', syl: 'সিলেট', sajek: 'সাজেক ভ্যালি' },
+    },
+    travel: {
+      over: 'Travel+',
+      quote: 'মানব সভ্যতার ইতিহাস মানেই ভ্রমণের ইতিহাস।',
+      body: 'জেটুর তাদের গাড়ি বানায় একটি ভাবনা থেকে: যাত্রাটাই আসল। সাজেকের পাহাড়ি পথ থেকে কক্সবাজারের মেরিন ড্রাইভ, এই এসইউভিগুলো তৈরি সেইসব যাত্রার জন্য যা বাংলাদেশের পরিবারগুলো সত্যিই করে।',
+    },
+    bento: {
+      over: 'যাত্রার জন্য তৈরি',
+      a: 'ম্যাট্রিক্স লাইট আর আত্মবিশ্বাসী ভঙ্গি',
+      b: 'স্ক্রিনকে ঘিরে সাজানো কেবিন',
+      c: 'তিন প্রজন্মের জন্য জায়গা',
+      d: 'রাস্তা শেষ হলেও থামবে না',
+    },
+    trust: {
+      over: 'কেন অফিশিয়াল',
+      title: 'অফিশিয়াল ডিস্ট্রিবিউটর থেকে কিনুন।',
+      items: [
+        ['অনুমোদিত', 'অটো মিউজিয়াম লিমিটেড অনুমোদিত জেটুরের অফিশিয়াল ডিস্ট্রিবিউটর।'],
+        ['আসল যন্ত্রাংশ', 'ফ্যাক্টরির যন্ত্রাংশ আর প্রশিক্ষিত টেকনিশিয়ান দিয়ে সার্ভিস।'],
+        ['টেস্ট ড্রাইভ', 'সিদ্ধান্ত নেওয়ার আগে তেজগাঁও শোরুমে যেকোনো মডেল চালিয়ে দেখুন।'],
+        ['দ্রুত উত্তর', 'দাম, রং আর ডেলিভারি নিয়ে হোয়াটসঅ্যাপে জিজ্ঞেস করুন।'],
+      ],
+    },
+    drive: {
+      over: 'টেস্ট ড্রাইভ',
+      title: 'ঢাকার রাস্তায় নিজেই চালিয়ে দেখুন।',
+      body: 'কোন মডেল আর কবে, জানিয়ে দিন। আমরা হোয়াটসঅ্যাপে নিশ্চিত করব, সাধারণত সেদিনই।',
+      name: 'আপনার নাম', phone: 'ফোন নম্বর', model: 'মডেল', day: 'পছন্দের দিন',
+      send: 'হোয়াটসঅ্যাপে পাঠান',
+      msg: (f) => `আসসালামু আলাইকুম জেটুর বাংলাদেশ, আমি একটি টেস্ট ড্রাইভ বুক করতে চাই।\nনাম: ${f.name}\nফোন: ${f.phone}\nমডেল: ${f.model}\nপছন্দের দিন: ${f.day}`,
+      priceMsg: (m) => `আসসালামু আলাইকুম জেটুর বাংলাদেশ, আমি ${m} এর দাম জানতে চাই।`,
+    },
+    showroom: {
+      over: 'শোরুম',
+      title: 'তেজগাঁওয়ে আমাদের শোরুমে আসুন।',
+      status: 'শীঘ্রই খুলছে',
+      directions: 'দিকনির্দেশনা',
+    },
+    menu: { open: 'মেনু', close: 'বন্ধ', home: 'হোম', models: 'সব মডেল', compare: 'মডেল তুলনা' },
+    common: {
+      explore: 'বিস্তারিত', allModels: 'সব মডেল', specs: 'স্পেসিফিকেশন', compare: 'মডেল তুলনা',
+      priceNote: 'দাম জানতে অনুরোধ করুন। সর্বশেষ দাম, রং ও অফারের জন্য কল বা হোয়াটসঅ্যাপ করুন।',
+      specNote: 'স্পেসিফিকেশন জেটুর গ্লোবাল তথ্য থেকে। বাংলাদেশের স্পেসিফিকেশন আমাদের টিমের কাছে নিশ্চিত করুন।',
+      colours: 'রং', otherModels: 'অন্যান্য মডেল',
+    },
+    sub: { overview: 'সংক্ষেপে', design: 'ডিজাইন', idm: 'i-DM হাইব্রিড', interior: 'ইন্টেরিয়র', features: 'ফিচার', safety: 'নিরাপত্তা', specs: 'স্পেসিফিকেশন' },
+    modelPage: {
+      gallery: 'পথে পথে',
+      idmTitle: 'এক গাড়ি, চালানোর তিন উপায়।',
+      idmBody: 'i-DM হলো জেটুরের প্লাগ-ইন হাইব্রিড সিস্টেম। রাতে বাসায় চার্জ দিন, সপ্তাহজুড়ে বিদ্যুতে চালান, আর লম্বা যাত্রায় ইঞ্জিন দায়িত্ব নেবে। রেঞ্জ নিয়ে কোনো চিন্তা নেই।',
+      ctaTitle: (n) => `${n} সামনাসামনি দেখতে প্রস্তুত?`,
+      ctaBody: 'সর্বশেষ দামের জন্য কল করুন, অথবা তেজগাঁও শোরুমে টেস্ট ড্রাইভ বুক করুন।',
+    },
+    modelsPage: {
+      over: 'মডেল',
+      title: 'আপনার জীবনের সঙ্গে মানানসই জেটুর খুঁজে নিন।',
+      body: 'তিনটি এসইউভি, একটি ভাবনা: যাত্রাটাই আসল। পাশাপাশি তুলনা করুন, তারপর পছন্দেরটি চালিয়ে দেখুন।',
+      compareTitle: 'পাশাপাশি তুলনা',
+      model: 'মডেল',
+    },
+    drivePage: {
+      steps: [
+        ['অনুরোধ পাঠান', 'মডেল আর দিন বেছে নিন। ফর্মটি আপনার তথ্যসহ হোয়াটসঅ্যাপ খুলে দেবে।'],
+        ['আমরা নিশ্চিত করব', 'আমাদের টিম সময় নিশ্চিত করে উত্তর দেবে, সাধারণত সেদিনই।'],
+        ['চালিয়ে দেখুন', 'ড্রাইভিং লাইসেন্স নিয়ে তেজগাঁও শোরুমে আসুন। ড্রাইভে প্রায় ৩০ মিনিট লাগে।'],
+      ],
+      bring: 'অনুগ্রহ করে বৈধ ড্রাইভিং লাইসেন্স সঙ্গে আনুন।',
+    },
+    showroomPage: {
+      hours: 'খোলার সময়',
+      hoursValue: 'শোরুম উদ্বোধনের সময় জানানো হবে',
+      contact: 'যোগাযোগ',
+      faqTitle: 'সাধারণ প্রশ্ন',
+      faq: [
+        ['অনলাইনে কি দাম দেখানো হয়?', 'বিনিময় হার আর অফারের সঙ্গে দাম বদলায়, তাই আমরা ফোন বা হোয়াটসঅ্যাপে সর্বশেষ দাম জানাই।'],
+        ['টেস্ট ড্রাইভ বুক করা যাবে?', 'হ্যাঁ। টেস্ট ড্রাইভ পেজ ব্যবহার করুন, অথবা মডেল ও পছন্দের দিন লিখে হোয়াটসঅ্যাপে মেসেজ দিন।'],
+        ['আপনারা কি অফিশিয়াল ডিস্ট্রিবিউটর?', 'হ্যাঁ। জেটুর বাংলাদেশ, অটো মিউজিয়াম লিমিটেড অনুমোদিত, বাংলাদেশে জেটুর গাড়ির অফিশিয়াল ডিস্ট্রিবিউটর।'],
+        ['কোন কোন মডেল পাওয়া যায়?', 'প্লাগ-ইন হাইব্রিড T2 i-DM, ড্যাশিং আর সাত আসনের X70 Plus। প্রাপ্যতা ও রং সম্পর্কে আমাদের জিজ্ঞেস করুন।'],
+      ],
+    },
+    notFound: { title: 'এই পথটি নেই।', body: 'আপনি যে পেজটি খুঁজছেন সেটি সরানো হয়েছে বা কখনো ছিল না।', home: 'হোমে ফিরুন' },
+    footer: {
+      note: 'জেটুর বাংলাদেশের জন্য প্রস্তুত কনসেপ্ট ডেমো। ছবি ও ভিডিও জেটুরের অফিশিয়াল ওয়েবসাইট থেকে। স্পেসিফিকেশন জেটুর গ্লোবাল তথ্য থেকে; বাংলাদেশের স্পেসিফিকেশন ভিন্ন হতে পারে।',
+      follow: 'ফলো করুন',
+    },
+  },
+}
+
+export const LangContext = createContext({ lang: 'en', t: strings.en, setLang: () => {} })
+export const useT = () => useContext(LangContext)
+
+// Pick the right language from a { en, bn } pair (plain strings pass through).
+export const pick = (v, lang) => (v && typeof v === 'object' && 'en' in v ? v[lang] ?? v.en : v)
