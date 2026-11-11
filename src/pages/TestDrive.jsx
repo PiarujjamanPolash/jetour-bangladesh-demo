@@ -1,14 +1,14 @@
 import { useRef } from 'react'
 import { useT } from '../i18n.js'
 import { media, contact } from '../media.js'
-import { useReveal } from '../hooks/motion.js'
+import { useSectionMotion } from '../hooks/useSectionMotion.js'
 import { TestDriveForm, ContactList, usePageTitle } from '../components/Blocks.jsx'
 
 export default function TestDrive() {
   const { t } = useT()
   const ref = useRef(null)
   usePageTitle(t.nav.drive)
-  useReveal(ref, [])
+  useSectionMotion(ref, 'testdrive')
   return (
     <div ref={ref} className="page page--drive">
       <div className="page__bg" aria-hidden="true">
@@ -20,9 +20,9 @@ export default function TestDrive() {
             <p className="overline overline--accent" data-reveal>{t.drive.over}</p>
             <h1 className="h1" data-reveal>{t.drive.title}</h1>
             <p className="lead" data-reveal>{t.drive.body}</p>
-            <ol className="steps">
+            <ol className="steps" data-mx="list">
               {t.drivePage.steps.map(([h, p], i) => (
-                <li key={h} data-reveal style={{ '--i': i }}>
+                <li key={h}>
                   <span className="mono">0{i + 1}</span>
                   <div><h3>{h}</h3><p>{p}</p></div>
                 </li>

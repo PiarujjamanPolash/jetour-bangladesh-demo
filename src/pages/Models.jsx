@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useT, pick } from '../i18n.js'
 import { contact } from '../media.js'
 import { models, compareRows } from '../models.js'
-import { useReveal } from '../hooks/motion.js'
+import { useSectionMotion } from '../hooks/useSectionMotion.js'
 import { ModelCard, usePageTitle } from '../components/Blocks.jsx'
 import { IconPhone, IconArrow } from '../components/icons.jsx'
 
@@ -11,7 +11,7 @@ export default function Models() {
   const { t, lang } = useT()
   const ref = useRef(null)
   usePageTitle(t.nav.models)
-  useReveal(ref, [])
+  useSectionMotion(ref, 'models')
   return (
     <div ref={ref} className="page">
       <header className="pagehead container">

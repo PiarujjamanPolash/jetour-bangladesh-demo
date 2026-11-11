@@ -1,10 +1,12 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import { useT } from '../i18n.js'
 import { media } from '../media.js'
 import { models } from '../models.js'
-import { useReveal, reduceMotion, scrollToId } from '../hooks/motion.js'
+import { reduceMotion, scrollToId } from '../hooks/motion.js'
+import { useSectionMotion } from '../hooks/useSectionMotion.js'
+import { DesignRail, IdmExplainer } from '../components/Sections.jsx'
 import Spin360 from '../components/Spin360.jsx'
 import TripPlanner from '../components/TripPlanner.jsx'
 import { ModelCard, TestDriveForm, ShowroomMap, ContactList, directionsHref, usePageTitle } from '../components/Blocks.jsx'
@@ -59,7 +61,7 @@ function Lineup() {
   return (
     <section className="lineup section" id="models">
       <div className="container">
-        <div className="section-head section-head--row" data-reveal>
+        <div className="section-head section-head--row" data-mx="head">
           <div>
             <p className="overline">{t.lineup.over}</p>
             <h2 className="h1">{t.lineup.title}</h2>
@@ -103,31 +105,20 @@ function Travel() {
   )
 }
 
-function Bento() {
+// "Made for the journey": the same pinned, sideways rail as the model pages' design section.
+function Journey() {
   const { t } = useT()
-  const tiles = [
-    { cls: 'b1', img: media.dashing.rear, cap: t.bento.a, model: 'Dashing', slug: 'dashing' },
-    { cls: 'b2', img: media.dashing.interior, cap: t.bento.b, model: 'Dashing', slug: 'dashing' },
-    { cls: 'b3', img: media.x70.family, cap: t.bento.c, model: 'X70 Plus', slug: 'x70-plus' },
-    { cls: 'b4', img: media.t2.forest, cap: t.bento.d, model: 'T2 i-DM', slug: 't2-idm' },
-  ]
-  return (
-    <section className="bento section">
-      <div className="container">
-        <div className="section-head" data-reveal>
-          <p className="overline">{t.bento.over}</p>
-        </div>
-        <div className="bento__grid">
-          {tiles.map((x, i) => (
-            <Link to={`/models/${x.slug}`} key={x.cls} className={`bento__tile ${x.cls}`} data-reveal style={{ '--i': i }}>
-              <img src={x.img} alt={`Jetour ${x.model}`} loading="lazy" referrerPolicy="no-referrer" />
-              <span className="bento__cap"><span>{x.model}</span>{x.cap}</span>
-            </Link>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
+  const block = {
+    title: t.bento.title,
+    items: [
+      { img: media.dashing.rear, title: t.bento.a, text: 'Jetour Dashing' },
+      { img: media.t2.forest, title: t.bento.d, text: 'Jetour T2 i-DM' },
+      { img: media.x70.family, title: t.bento.c, text: 'Jetour X70 Plus' },
+      { img: media.dashing.interior, title: t.bento.b, text: 'Jetour Dashing' },
+      { img: media.t2.mountain, title: t.bento.e, text: 'Jetour T2 i-DM' },
+    ],
+  }
+  return <DesignRail id="journey" over={t.bento.over} block={block} />
 }
 
 function Trust() {
@@ -135,13 +126,13 @@ function Trust() {
   return (
     <section className="trust section">
       <div className="container trust__grid">
-        <div data-reveal>
+        <div data-mx="head">
           <p className="overline">{t.trust.over}</p>
           <h2 className="h2">{t.trust.title}</h2>
         </div>
-        <ol className="trust__list">
+        <ol className="trust__list" data-mx="list">
           {t.trust.items.map(([h, p], i) => (
-            <li key={h} data-reveal style={{ '--i': i }}>
+            <li key={h}>
               <span className="mono trust__n">0{i + 1}</span>
               <h3>{h}</h3>
               <p>{p}</p>
@@ -158,11 +149,15 @@ function DriveSection() {
   return (
     <section className="drive section" id="drive">
       <div className="container drive__grid">
-        <div className="drive__copy" data-reveal>
-          <p className="overline overline--accent">{t.drive.over}</p>
-          <h2 className="h1">{t.drive.title}</h2>
-          <p className="lead">{t.drive.body}</p>
-          <img src={media.dashing.street} alt="Jetour Dashing" loading="lazy" referrerPolicy="no-referrer" className="drive__img" />
+        <div className="drive__copy">
+          <div data-mx="head">
+            <p className="overline overline--accent">{t.drive.over}</p>
+            <h2 className="h1">{t.drive.title}</h2>
+            <p className="lead">{t.drive.body}</p>
+          </div>
+          <div className="drive__imgwrap" data-mx="photo">
+            <img src={media.dashing.street} alt="Jetour Dashing" loading="lazy" referrerPolicy="no-referrer" className="drive__img" />
+          </div>
         </div>
         <TestDriveForm />
       </div>
@@ -175,9 +170,11 @@ function ShowroomSection() {
   return (
     <section className="showroom section" id="showroom">
       <div className="container showroom__grid">
-        <div data-reveal>
-          <p className="overline">{t.showroom.over}</p>
-          <h2 className="h2">{t.showroom.title}</h2>
+        <div>
+          <div data-mx="head">
+            <p className="overline">{t.showroom.over}</p>
+            <h2 className="h2">{t.showroom.title}</h2>
+          </div>
           <p className="showroom__status"><i />{t.showroom.status}</p>
           <address className="showroom__addr">218/B Bir Uttam Mir Shawkat Sarak, Tejgaon-Gulshan Link Road, Dhaka</address>
           <ContactList />
@@ -194,16 +191,19 @@ function ShowroomSection() {
 
 export default function Home() {
   const ref = useRef(null)
+  const [idmStep, setIdmStep] = useState(0)
   usePageTitle(null)
-  useReveal(ref, [])
+  useSectionMotion(ref, 'home', { chrome: 76, setIdmStep })
+  const t2 = models.find((m) => m.id === 't2')
   return (
     <div ref={ref}>
       <Hero />
       <Lineup />
+      <Journey />
       <Spin360 />
+      <IdmExplainer m={t2} step={idmStep} showPower={false} />
       <TripPlanner />
       <Travel />
-      <Bento />
       <Trust />
       <DriveSection />
       <ShowroomSection />

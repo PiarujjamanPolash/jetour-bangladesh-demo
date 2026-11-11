@@ -58,6 +58,8 @@ export const strings = {
       b: 'A cabin built around the screen',
       c: 'Room for three generations',
       d: 'Ready when the road ends',
+      title: 'Every journey, covered.',
+      e: 'Built for the long way round',
     },
     trust: {
       over: 'Why buy official',
@@ -197,6 +199,8 @@ export const strings = {
       b: 'স্ক্রিনকে ঘিরে সাজানো কেবিন',
       c: 'তিন প্রজন্মের জন্য জায়গা',
       d: 'রাস্তা শেষ হলেও থামবে না',
+      title: 'প্রতিটি যাত্রার জন্য প্রস্তুত।',
+      e: 'লম্বা পথের জন্য তৈরি',
     },
     trust: {
       over: 'কেন অফিশিয়াল',

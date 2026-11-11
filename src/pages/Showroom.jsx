@@ -2,7 +2,7 @@ import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useT } from '../i18n.js'
 import { contact } from '../media.js'
-import { useReveal } from '../hooks/motion.js'
+import { useSectionMotion } from '../hooks/useSectionMotion.js'
 import { ShowroomMap, ContactList, directionsHref, usePageTitle } from '../components/Blocks.jsx'
 import { IconArrow } from '../components/icons.jsx'
 
@@ -27,7 +27,7 @@ export default function Showroom() {
   const { t } = useT()
   const ref = useRef(null)
   usePageTitle(t.nav.showroom)
-  useReveal(ref, [])
+  useSectionMotion(ref, 'showroom')
   return (
     <div ref={ref} className="page">
       <header className="pagehead container">

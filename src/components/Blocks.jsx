@@ -9,7 +9,7 @@ import { IconWA, IconPhone, IconArrow } from './icons.jsx'
 export function ModelCard({ m, index }) {
   const { t, lang } = useT()
   return (
-    <article className={`model model--${m.id}`} data-reveal style={{ '--i': index }}>
+    <article className={`model model--${m.id}`} style={{ '--i': index }}>
       <Link to={`/models/${m.slug}`} className="model__media" aria-label={`Jetour ${m.name}`}>
         <img src={m.image} alt={`Jetour ${m.name}`} loading="lazy" referrerPolicy="no-referrer" />
         <span className="model__badge">{m.badge}</span>
@@ -94,7 +94,7 @@ export function TestDriveForm({ initialModel }) {
 export function ShowroomMap() {
   const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(contact.mapQuery)}&output=embed`
   return (
-    <div className="showroom__map" data-reveal>
+    <div className="showroom__map" data-mx="photo">
       <iframe title="Map: Jetour Bangladesh showroom" src={mapSrc} loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
     </div>
   )
