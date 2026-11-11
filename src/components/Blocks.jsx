@@ -136,7 +136,7 @@ export function CtaBand({ m }) {
 export function usePageTitle(title) {
   const prev = useRef(document.title)
   useEffect(() => {
-    document.title = title ? `${title} · Jetour Bangladesh` : 'Jetour Bangladesh · Concept demo'
+    document.title = title ? `${title} · Jetour Bangladesh` : 'Jetour Bangladesh · Concept demo by Braingig'
     return () => { document.title = prev.current }
   }, [title])
 }

@@ -111,7 +111,11 @@ function Footer() {
             <a href={contact.instagram} target="_blank" rel="noreferrer">Instagram</a>
           </div>
         </div>
-        <p className="fine footer__note">{t.footer.note}</p>
+        <div className="footer__legal">
+          <p className="footer__copy"><strong>{t.footer.copyright}</strong></p>
+          <p className="fine">{t.footer.ownership}</p>
+          <p className="fine">{t.footer.trademarks} {t.footer.note}</p>
+        </div>
       </div>
     </footer>
   )

@@ -1,6 +1,8 @@
 # Jetour Bangladesh: website concept demo
 
-A React (Vite) concept website for Jetour Bangladesh, the official Jetour distributor in Bangladesh.
+**© 2026 Braingig. All rights reserved.** This design concept is the property of Braingig and may not be copied or reproduced without written permission. See [LICENSE](LICENSE).
+
+A React (Vite) concept website by Braingig for Jetour Bangladesh, the official Jetour distributor in Bangladesh.
 English and Bangla. Prices are not shown: every model has a **Call for price** button and a WhatsApp button.
 
 ## Pages

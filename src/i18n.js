@@ -2,7 +2,7 @@ import { createContext, useContext } from 'react'
 
 export const strings = {
   en: {
-    ribbon: 'Concept demo for Jetour Bangladesh. Not the official website.',
+    ribbon: 'Design concept by Braingig for Jetour Bangladesh. Not the official website.',
     nav: { models: 'Models', spin: '360° view', idm: 'i-DM Hybrid', drive: 'Test drive', showroom: 'Showroom', compare: 'Compare' },
     lang: 'বাংলা',
     hero: {
@@ -98,6 +98,10 @@ export const strings = {
       idmBody: 'i-DM is Jetour\'s plug-in hybrid system. Charge at home overnight, drive on electricity during the week, and let the engine take over on long trips. No range worry.',
       ctaTitle: (n) => `Ready to see the ${n} in person?`,
       ctaBody: 'Call for the latest price, or book a test drive at our Tejgaon showroom.',
+      idmViz: {
+        battery: 'Battery', engine: 'Engine', on: 'On', off: 'Off',
+        states: ['Engine off. The battery drives the wheels.', 'Engine and motors share the load.', 'Fast charge: 30% to 80% in about 30 minutes.'],
+      },
     },
     modelsPage: {
       over: 'Models',
@@ -128,13 +132,16 @@ export const strings = {
     },
     notFound: { title: 'This road does not exist.', body: 'The page you are looking for has moved or never existed.', home: 'Back to home' },
     footer: {
-      note: 'Concept demo prepared for Jetour Bangladesh. Photos and video from Jetour official websites. Specifications from Jetour global information; Bangladesh specifications may differ.',
+      note: 'Concept demo prepared by Braingig for Jetour Bangladesh. Photos and video from Jetour official websites. Specifications from Jetour global information; Bangladesh specifications may differ.',
       follow: 'Follow',
+      copyright: '© 2026 Braingig. All rights reserved.',
+      ownership: 'This website design concept, including its layout, interactions and code, is the property of Braingig. It may not be copied or reproduced, in whole or in part, without written permission from Braingig.',
+      trademarks: 'Jetour names, logos, photos and video belong to their respective owners and are shown for presentation only.',
     },
   },
 
   bn: {
-    ribbon: 'জেটুর বাংলাদেশের জন্য কনসেপ্ট ডেমো। এটি অফিশিয়াল ওয়েবসাইট নয়।',
+    ribbon: 'জেটুর বাংলাদেশের জন্য ব্রেইনগিগের ডিজাইন কনসেপ্ট। এটি অফিশিয়াল ওয়েবসাইট নয়।',
     nav: { models: 'মডেল', spin: '৩৬০° ভিউ', idm: 'i-DM হাইব্রিড', drive: 'টেস্ট ড্রাইভ', showroom: 'শোরুম', compare: 'তুলনা' },
     lang: 'English',
     hero: {
@@ -230,6 +237,10 @@ export const strings = {
       idmBody: 'i-DM হলো জেটুরের প্লাগ-ইন হাইব্রিড সিস্টেম। রাতে বাসায় চার্জ দিন, সপ্তাহজুড়ে বিদ্যুতে চালান, আর লম্বা যাত্রায় ইঞ্জিন দায়িত্ব নেবে। রেঞ্জ নিয়ে কোনো চিন্তা নেই।',
       ctaTitle: (n) => `${n} সামনাসামনি দেখতে প্রস্তুত?`,
       ctaBody: 'সর্বশেষ দামের জন্য কল করুন, অথবা তেজগাঁও শোরুমে টেস্ট ড্রাইভ বুক করুন।',
+      idmViz: {
+        battery: 'ব্যাটারি', engine: 'ইঞ্জিন', on: 'চালু', off: 'বন্ধ',
+        states: ['ইঞ্জিন বন্ধ। ব্যাটারিই চাকা চালাচ্ছে।', 'ইঞ্জিন আর মোটর একসঙ্গে কাজ করছে।', 'ফাস্ট চার্জ: ৩০% থেকে ৮০% প্রায় ৩০ মিনিটে।'],
+      },
     },
     modelsPage: {
       over: 'মডেল',
@@ -260,8 +271,11 @@ export const strings = {
     },
     notFound: { title: 'এই পথটি নেই।', body: 'আপনি যে পেজটি খুঁজছেন সেটি সরানো হয়েছে বা কখনো ছিল না।', home: 'হোমে ফিরুন' },
     footer: {
-      note: 'জেটুর বাংলাদেশের জন্য প্রস্তুত কনসেপ্ট ডেমো। ছবি ও ভিডিও জেটুরের অফিশিয়াল ওয়েবসাইট থেকে। স্পেসিফিকেশন জেটুর গ্লোবাল তথ্য থেকে; বাংলাদেশের স্পেসিফিকেশন ভিন্ন হতে পারে।',
+      note: 'ব্রেইনগিগের তৈরি জেটুর বাংলাদেশের জন্য কনসেপ্ট ডেমো। ছবি ও ভিডিও জেটুরের অফিশিয়াল ওয়েবসাইট থেকে। স্পেসিফিকেশন জেটুর গ্লোবাল তথ্য থেকে; বাংলাদেশের স্পেসিফিকেশন ভিন্ন হতে পারে।',
       follow: 'ফলো করুন',
+      copyright: '© ২০২৬ ব্রেইনগিগ। সর্বস্বত্ব সংরক্ষিত।',
+      ownership: 'এই ওয়েবসাইটের ডিজাইন কনসেপ্ট, এর লেআউট, ইন্টারঅ্যাকশন ও কোডসহ, ব্রেইনগিগের সম্পত্তি। ব্রেইনগিগের লিখিত অনুমতি ছাড়া আংশিক বা সম্পূর্ণ কপি বা পুনরুৎপাদন করা যাবে না।',
+      trademarks: 'জেটুরের নাম, লোগো, ছবি ও ভিডিও তাদের নিজ নিজ মালিকের, শুধু উপস্থাপনার জন্য দেখানো হয়েছে।',
     },
   },
 }
